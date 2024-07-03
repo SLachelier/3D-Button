@@ -1,12 +1,29 @@
+/* Importing Google Fonts with various weights and styles for Montserrat */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Styling for the html element to center content and handle sizing and overflow */
 html {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  max-height: 110vh;
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   text-align: center;
+  overflow: hidden;
 }
 
+/*Background image styling*/
+.action-lines {
+  background: url(https://c402277.ssl.cf1.rackcdn.com/photos/14559/images/cropped/Web_Uporny_3_Panel2_motion_lines_opt.png);
+  background-repeat: no-repeat;
+  background-position: -500px -60px;
+  background-size: cover;
+}
+
+/* Styling for the .box container */
 .box {
   position: relative;
   width: 225px;
@@ -14,6 +31,7 @@ html {
   cursor: pointer;
 }
 
+/* Styling for the contents inside the box */
 .box-contents {
   position: absolute;
   top: 0;
@@ -22,175 +40,151 @@ html {
   left: 0;
   outline: none;
   border: 3px solid #000;
-  background: white;
   background-color: lightpink;
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
   font-size: larger;
-  transition: 0.5s ease;
-  border-radius: 1rem;
+  transition: 0.4s;
+  border-radius: 10px;
   cursor: pointer;
 }
+/* changes the box-contents during click */
+.box:active .box-contents {
+  background-color: lightblue;
+  box-shadow: inset 0 2px 12px rgba(0, 0, 0, 0.5);
+}
 
-.hover-point {
+/* Prevents user from highlighting text */
+span {
+  user-select: none;
+}
+
+.box-point {
   position: absolute;
-  z-index: 3;
-  width: calc(100% / 3);
-  height: calc(100% / 3);
-  border-radius: 1rem;
-}
-.hover-point:hover ~ .box-contents {
-  border-radius: 1rem;
-  box-shadow: 10px 6px 1px 1px rgba(0, 0, 0, 1);
-  transform-origin: right top;
-  transform: perspective(1000px) rotateX(10deg) rotateY(-10deg) rotateZ(2deg);
+  z-index: 3; /* Stack order to enable box-shadowing*/
+  width: calc(100% / 3); /* Width set to one-third of its parent */
+  height: calc(100% / 3); /* Height set to one-third of its parent */
 }
 
-.hover-point:nth-child(1) {
+/* Style for .box-contents when hovering over .box-point */
+.box-point:hover ~ .box-contents { 
+  border-radius: 10px;
+  box-shadow: 10px 6px 1px 1px rgba(0, 0, 0, 1); /* Shadow effect */
+  transform-origin: right top; /* Origin point for transformations */
+  transform: perspective(1000px) rotateX(10deg) rotateY(-10deg) rotateZ(2deg); /* 3D rotation */
+}
+
+/* Positioning and visibility for each .box-point based on its child order */
+.box-point:nth-child(1) {
   top: 0;
   left: 0;
-  border-radius: 1rem;
+  border-radius: 10px;
   opacity: 0;
 }
-.hover-point:nth-child(2) {
+.box-point:nth-child(2) {
   top: 0;
   left: calc(100% / 3);
-  border-radius: 1rem;
+  border-radius: 10px;
   opacity: 0;
 }
-.hover-point:nth-child(3) {
+.box-point:nth-child(3) {
   top: 0;
   right: 0;
-  border-radius: 1rem;
+  border-radius: 10px;
   opacity: 0;
 }
-.hover-point:nth-child(4) {
+.box-point:nth-child(4) {
   top: calc(100% / 3);
   left: 0;
-  border-radius: 1rem;
+  border-radius: 10px;
   opacity: 0;
 }
-.hover-point:nth-child(5) {
+.box-point:nth-child(5) {
   top: calc(100% / 3);
   right: 0;
-  border-radius: 1rem;
+  border-radius: 10px;
   opacity: 0;
 }
-.hover-point:nth-child(6) {
+.box-point:nth-child(6) {
   bottom: 0;
   left: 0;
-  border-radius: 1rem;
+  border-radius: 10px;
   opacity: 0;
 }
-.hover-point:nth-child(7) {
+.box-point:nth-child(7) {
   bottom: 0;
   left: calc(100% / 3);
-  border-radius: 1rem;
+  border-radius: 10px;
   opacity: 0;
 }
-.hover-point:nth-child(8) {
+.box-point:nth-child(8) {
   bottom: 0;
   right: 0;
-  border-radius: 1rem;
+  border-radius: 10px;
   opacity: 0;
 }
-.hover-point:nth-child(1):hover ~ .box-contents {
-  border-radius: 1rem;
+/* Specific hover effects for each .box-point to create varied box-shadow effects */
+.box-point:nth-child(1):hover ~ .box-contents {
+  border-radius: 10px;
   box-shadow: 10px 6px 1px 1px rgba(0, 0, 0, 1);
   transform-origin: right top;
   transform: perspective(1000px) rotateX(10deg) rotateY(-10deg) rotateZ(2deg);
 }
-.hover-point:nth-child(2):hover ~ .box-contents {
-  border-radius: 1rem;
+.box-point:nth-child(2):hover ~ .box-contents {
+  border-radius: 10px;
   box-shadow: 0 10px 1px rgba(0, 0, 0, 1);
   transform-origin: center top;
   transform: perspective(1000px) rotateX(10deg);
 }
-.hover-point:nth-child(3):hover ~ .box-contents {
-  border-radius: 1rem;
+.box-point:nth-child(3):hover ~ .box-contents {
+  border-radius: 10px;
   box-shadow: -6px 8px 1px 4px rgba(0, 0, 0, 1);
   transform-origin: left top;
   transform: perspective(1000px) rotateX(10deg) rotateY(10deg) rotateZ(-2deg);
 }
-.hover-point:nth-child(4):hover ~ .box-contents {
-  border-radius: 1rem;
+.box-point:nth-child(4):hover ~ .box-contents {
+  border-radius: 10px;
   box-shadow: 8px 5px 1px rgba(0, 0, 0, 1);
   transform-origin: left center;
   transform: perspective(1000px) rotateY(-10deg);
 }
-.hover-point:nth-child(5):hover ~ .box-contents {
-  border-radius: 1rem;
+.box-point:nth-child(5):hover ~ .box-contents {
+  border-radius: 10px;
   box-shadow: -6px 4px 1px rgba(0, 0, 0, 1);
   transform-origin: right center;
   transform: perspective(1000px) rotateY(10deg);
 }
-.hover-point:nth-child(6):hover ~ .box-contents {
-  border-radius: 1rem;
+.box-point:nth-child(6):hover ~ .box-contents {
+  border-radius: 10px;
   box-shadow: 8px -4px 1px 2px rgba(0, 0, 0, 1);
   transform-origin: right bottom;
   transform: perspective(1000px) rotateX(-10deg) rotateY(-10deg) rotateZ(-2deg);
 }
-.hover-point:nth-child(7):hover ~ .box-contents {
-  border-radius: 1rem;
+.box-point:nth-child(7):hover ~ .box-contents {
+  border-radius: 10px;
   box-shadow: 0 -10px 1px rgba(0, 0, 0, 1);
   transform-origin: center bottom;
   transform: perspective(1000px) rotateX(-10deg);
 }
-.hover-point:nth-child(8):hover ~ .box-contents {
-  border-radius: 1rem;
+.box-point:nth-child(8):hover ~ .box-contents {
+  border-radius: 10px;
   box-shadow: -10px -6px 1px 2px rgba(0, 0, 0, 1);
   transform-origin: left bottom;
   transform: perspective(1000px) rotateX(-10deg) rotateY(10deg) rotateZ(2deg);
 }
 
-input[type="checkbox"]:checked ~ .box .hover-point {
-  counter-increment: point;
-}
-input[type="checkbox"]:checked ~ .box .hover-point::before {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  content: counter(point);
-  color: #fff;
-  font-size: 1.5rem;
-}
-input[type="checkbox"]:checked ~ .box .hover-point:nth-child(1) {
-  background: rgba(46, 204, 113, 1);
-}
-input[type="checkbox"]:checked ~ .box .hover-point:nth-child(2) {
-  background: rgba(52, 152, 219, 0.5);
-}
-input[type="checkbox"]:checked ~ .box .hover-point:nth-child(3) {
-  background: rgba(155, 89, 182, 1);
-}
-input[type="checkbox"]:checked ~ .box .hover-point:nth-child(4) {
-  background: rgba(241, 196, 15, 1);
-}
-input[type="checkbox"]:checked ~ .box .hover-point:nth-child(5) {
-  background: rgba(230, 126, 34, 1);
-}
-input[type="checkbox"]:checked ~ .box .hover-point:nth-child(6) {
-  background: rgba(231, 76, 60, 1);
-}
-input[type="checkbox"]:checked ~ .box .hover-point:nth-child(7) {
-  background: rgba(26, 188, 156, 0.5);
-}
-input[type="checkbox"]:checked ~ .box .hover-point:nth-child(8) {
-  background: rgba(149, 165, 166, 1);
-}
-
 .box::after {
   content: "";
   position: absolute;
-  top: calc(var(--y, 0) * 1px - 85px);
-  left: calc(var(--x, 0) * 1px - 85px);
+  top: calc(var(--y, 0) * 1px - 85px); /* Y-axis calculation for the highlight following the mouse */
+  left: calc(var(--x, 0) * 1px - 85px);/* X-axis calculation for the highlight following the mouse */
   width: 175px;
   height: 175px;
   background: radial-gradient(white, #3984ff00 60%);
 }
 
+/* Changes the highlight effect when hovering over the box */
 .box:hover::after {
-  opacity: 0.4;
-  filter: brightness(150%);
+  opacity: 0.4; /* Make the highlight more visible */
+  filter: brightness(150%);  /* Increase brightness */
 }

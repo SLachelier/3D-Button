@@ -1,7 +1,7 @@
+/* Constant variable assigned to select the .box class */
 const button = document.querySelector(".box");
 
-const readout = document.querySelector("p");
-
+/* Event listener to listen for mouse movement */
 button.addEventListener("mousemove", (e) => {
   const { x, y } = button.getBoundingClientRect();
   button.style.setProperty("--x", e.clientX - x);
